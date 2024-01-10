@@ -1,10 +1,7 @@
 'use client'
 
-import { Inter } from 'next/font/google'
 import '../globals.css'
 import { motion } from 'framer-motion'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function LoginLayout({
     children,

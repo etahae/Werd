@@ -3,6 +3,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import RegConf from './RegConf'
 import axios from 'axios'
 
+const postNewUserData = async () => {
+    await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/registerNewArtist`, {
+        username: "xd",
+        email: "lmao",
+        password: "lol",
+        confirmPassword: "lol"
+    })
+}
+
 const Register = () => {
 
     const inputStyle = 'bg-white border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none'
@@ -23,7 +32,7 @@ const Register = () => {
         console.log(pwSimilar)
         console.log(userName)
         setUserName('')
-        axios.post('', {})
+        postNewUserData()
     }
 
     const [first, setFirst] = useState('')
