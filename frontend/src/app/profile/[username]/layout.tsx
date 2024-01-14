@@ -10,11 +10,12 @@ export default function ProfilePageLayout({
     params: {username: string},
   }) {
 
+    //get user data
     const userData = {username : params.username}
 
     return (
         <userDataContext.Provider value={userData}>
-            <div >{children}</div>
+            <div className='fixed' >{children}</div>
         </userDataContext.Provider>
     )
   }

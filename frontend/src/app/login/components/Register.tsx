@@ -84,9 +84,9 @@ const Register = () => {
         <button disabled={pwSimilar ? false : true} type="submit" className="text-white flex items-center justify-center gap-2 bg-slate-600 rounded-2xl py-2 px-4 w-full hover:bg-slate-400 transition-all">Submit</button>
         
     </motion.form>
-        <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
-            {backDropStatus ? <RegConf userName={userName} setUserName={setUserName} confirm={confirmForm} hide={() => setBackDropStatus(false)} /> : '' }
-        </AnimatePresence>
+    <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
+        {backDropStatus ? <RegConf userName={userName} setUserName={setUserName} confirm={confirmForm} hide={() => setBackDropStatus(false)} /> : '' }
+    </AnimatePresence>
     </>
   )
 }
