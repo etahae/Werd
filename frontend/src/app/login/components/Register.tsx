@@ -1,6 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import RegConf from './RegConf'
 import axios from 'axios'
 
 const postNewUserData = async () => {
@@ -17,21 +16,15 @@ const Register = () => {
     const inputStyle = 'bg-white border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none'
     const labelStyle = 'block mb-2 text-sm font-medium text-gray-100'
 
-    const [backDropStatus, setBackDropStatus] = useState(false)
+    // const [backDropStatus, setBackDropStatus] = useState(false)
 
     const submitForm = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        setBackDropStatus(true)
-    }
-
-    const confirmForm = (e:FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        setBackDropStatus(false)
         console.log(pw)
         console.log(pwConf)
         console.log(pwSimilar)
-        console.log(userName)
-        setUserName('')
+        // console.log(userName)
+        // setUserName('')
         postNewUserData()
     }
 
@@ -41,7 +34,7 @@ const Register = () => {
     const [pw, setPw] = useState('')
     const [pwConf, setPwConf] = useState('')
 
-    const [userName, setUserName] = useState('')
+    // const [userName, setUserName] = useState('')
 
     const [pwSimilar, setPwSimilar] = useState(false)
 
@@ -84,9 +77,9 @@ const Register = () => {
         <button disabled={pwSimilar ? false : true} type="submit" className="text-white flex items-center justify-center gap-2 bg-slate-600 rounded-2xl py-2 px-4 w-full hover:bg-slate-400 transition-all">Submit</button>
         
     </motion.form>
-    <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
+    {/* <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
         {backDropStatus ? <RegConf userName={userName} setUserName={setUserName} confirm={confirmForm} hide={() => setBackDropStatus(false)} /> : '' }
-    </AnimatePresence>
+    </AnimatePresence> */}
     </>
   )
 }

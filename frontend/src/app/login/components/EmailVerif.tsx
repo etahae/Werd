@@ -19,7 +19,7 @@ const EmailVerif = () => {
         else if (e.key >= '0' && e.key <= '9') {
             verifCode[index] = e.key
             e.currentTarget.value = e.key
-            if (index == 5)
+            if (index == 5 && !verifCode.includes(""))
                 submitCode(null)
             nextInput?.focus()
         }
