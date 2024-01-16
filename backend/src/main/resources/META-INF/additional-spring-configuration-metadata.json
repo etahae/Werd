@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "security.oauth2.client.registration.google.redirectUri",
+    "type": "java.lang.String",
+    "description": "A description for 'security.oauth2.client.registration.google.redirectUri'"
+  },
+  {
+    "name": "security.oauth2.client.registration.google.authorizationUri",
+    "type": "java.lang.String",
+    "description": "A description for 'security.oauth2.client.registration.google.authorizationUri'"
+  }
+]}
