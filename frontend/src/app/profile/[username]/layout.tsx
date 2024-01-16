@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useContext } from 'react'
 import { userDataContext } from './contexts/userData'
 
 export default function ProfilePageLayout({
@@ -11,11 +10,11 @@ export default function ProfilePageLayout({
   }) {
 
     //get user data
-    const userData = {username : params.username}
+    const userData = {username : params.username, firstname: 'taha', lastname: 'namir'}
 
     return (
         <userDataContext.Provider value={userData}>
-            <div className='fixed' >{children}</div>
+            <div className='fixed bg-transparent w-full h-full' >{children}</div>
         </userDataContext.Provider>
     )
   }
