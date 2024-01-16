@@ -2,12 +2,14 @@ import React, { FormEvent, useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import axios from 'axios'
 
-const postNewUserData = async () => {
-    await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/registerNewArtist`, {
+const postNewUserData = async (firstname: string, lastname: string, email: string, password: string, confirmPassword: string) => {
+    await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/registerNewListener`, {
         username: "xd",
-        email: "lmao",
-        password: "lol",
-        confirmPassword: "lol"
+        firstname,
+        lastname,
+        email,
+        password,
+        confirmPassword,
     })
 }
 
@@ -20,12 +22,7 @@ const Register = () => {
 
     const submitForm = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(pw)
-        console.log(pwConf)
-        console.log(pwSimilar)
-        // console.log(userName)
-        // setUserName('')
-        postNewUserData()
+        postNewUserData(first, last, email, pw, pwConf)
     }
 
     const [first, setFirst] = useState('')
