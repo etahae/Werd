@@ -1,7 +1,7 @@
 'use client'
 
 import React, { FC, useContext } from 'react'
-import { userDataContext } from './contexts/userData'
+import { userDataContext } from '../contexts/userData'
 import Avatar from 'react-avatar'
 import UserProfile from './components/UserProfile/UserProfile'
 import MusicList from './components/MusicList'

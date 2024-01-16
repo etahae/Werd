@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { userDataContext } from '../../contexts/userData'
+import { userDataContext } from '../../../contexts/userData'
 import Avatar from 'react-avatar'
 import { BsThreeDots } from "react-icons/bs";
 import { IoPencil } from "react-icons/io5";
@@ -16,7 +16,7 @@ const UserProfile = () => {
         <div className='w-full rounded-2xl bg-transparent p-5 flex justify-between gap-5 items-center select-none'>
             <span className='font-bold text-4xl text-gray-100 flex items-center justify-between gap-5'>
                 <div className='text-white bg-transparent w-[140px] h-[140px] rounded-full overflow-hidden relative' onMouseEnter={() => setNewPfp(true)} onMouseLeave={() => setNewPfp(false)}>
-                    <Avatar className='z-0' src='' color='black' alt={userData.username} textSizeRatio={3} name={userData.firstname + " " + userData.lastname} size='140' round />
+                    <Avatar className='z-0' src={userData.photo} color='black' alt={userData.username} textSizeRatio={3} name={userData.firstname + " " + userData.lastname} size='140' round />
                     {newPfp ?
                     <span className='bg-[#000000e1] text-base z-10 absolute top-0 left-0 w-[140px] h-[140px] rounded-full flex flex-col items-center justify-center'>
                         <span className='text-4xl'><IoPencil /></span>
