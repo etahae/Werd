@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ import api.dev.service.registration.RegistrationService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 
+@CrossOrigin("*")
 @RequestMapping("/api/auth")
 @RestController
 @RequiredArgsConstructor

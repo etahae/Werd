@@ -52,7 +52,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/error", "/api/auth/registerNewListener" , "/api/auth/confirm" , "/api/auth/login" , "/api/auth/resendEmail").permitAll();
+                    auth.requestMatchers("/error", "/api/auth/registerNewListener" , "/api/auth/confirm" , "/api/auth/login" , "/api/auth/resendEmail" ).permitAll();
                     auth.anyRequest().authenticated();
             });
             http.authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

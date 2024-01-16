@@ -61,7 +61,7 @@ public class RegistrationService {
             return ResponseEntity.badRequest().body("confirmied password not matched");
         }
 
-        User newArtist = new User(dto.getFirastName() , dto.getFirastName() , dto.getEmail() ,encoder.encode( dto.getPassword()) , Roles.ROLE_LISTENER); 
+        User newArtist = new User(dto.getFirstName() , dto.getLastName() , dto.getEmail() ,encoder.encode( dto.getPassword()) , Roles.ROLE_LISTENER); 
         
         repository.save(newArtist);
 
