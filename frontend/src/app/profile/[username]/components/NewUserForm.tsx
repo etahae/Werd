@@ -1,11 +1,8 @@
 import { motion } from 'framer-motion'
 import React, { FormEvent, useEffect, useState } from 'react'
 
-interface RegConfProps {
-    hide: React.Dispatch<React.SetStateAction<boolean>>,
-    confirm: (e: FormEvent<HTMLFormElement>) => void,
-    setUserName: React.Dispatch<React.SetStateAction<string>>,
-    userName: string,
+interface NewUserFormProps {
+
 }
 
 const dropIn = {
@@ -16,20 +13,21 @@ const dropIn = {
     exit: { y: "100vh", opacity: 0 },
 }
 
-const RegConf:React.FC<RegConfProps> = ( { confirm, hide, setUserName, userName } ) => {
+const NewUserForm:React.FC<NewUserFormProps> = ( {  } ) => {
 
     const [validUsername, setValidUsername] = useState(true)
-    useEffect( () => {
-        if (userName === 'lol')
-            setValidUsername(false)
-        else {
-            setValidUsername(true)
-        }
-    }, [userName])
+    const [username, setUserName] = useState('')
+    // useEffect( () => {
+    //     if (userName === 'lol')
+    //         setValidUsername(false)
+    //     else {
+    //         setValidUsername(true)
+    //     }
+    // }, [userName])
 
   return (
-    <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='flex items-center justify-center left-0 top-0 w-full h-full absolute bg-[#000000c8]' onMouseUp={() => hide(false)}>
-        <motion.form onSubmit={(e) => {setUserName(userName); validUsername ? confirm(e) : ''}} className='p-4 rounded-xl min-w--52 bg-gradient-to-b from-slate-900 to-slate-500' variants={dropIn} initial="hidden" animate="visible" exit="exit" onMouseUp={e => e.stopPropagation()}>
+    <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='flex items-center justify-center left-0 top-0 w-full h-full absolute bg-[#000000c8]'>
+        <motion.form className='p-4 rounded-xl min-w--52 bg-gradient-to-b from-slate-900 to-slate-500' variants={dropIn} initial="hidden" animate="visible" exit="exit" onMouseUp={e => e.stopPropagation()}>
             <div>
                 {/* <label htmlFor="username" className='block text-md font-bold text-black'>Usename</label> */}
                 <input autoComplete='off' minLength={3} maxLength={15} autoFocus type="text" id="usename" className='bg-white border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none' placeholder="username (3 - 15)" required onChange={e => {setUserName(e.target.value.trim()); e.target.value = e.target.value.trim()}} />
@@ -41,4 +39,4 @@ const RegConf:React.FC<RegConfProps> = ( { confirm, hide, setUserName, userName 
   )
 }
 
-export default RegConf
+export default NewUserForm

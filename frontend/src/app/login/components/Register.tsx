@@ -1,8 +1,11 @@
 import React, { FormEvent, useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import EmailVerif from './EmailVerif'
 
-const postNewUserData = async (firstname: string, lastname: string, email: string, password: string, confirmPassword: string) => {
+const postNewUserData = async (firstname: string, lastname: string, email: string, password: string, confirmPassword: string, router: AppRouterInstance, showEmailVerif: React.Dispatch<React.SetStateAction<boolean>>) => {
     await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/registerNewListener`, {
         username: "xd",
         firstname,
@@ -10,7 +13,7 @@ const postNewUserData = async (firstname: string, lastname: string, email: strin
         email,
         password,
         confirmPassword,
-    })
+    }).then(res => {res.status == 200 || res.status == 201 ? showEmailVerif(true) : ''})
 }
 
 const Register = () => {
@@ -18,11 +21,13 @@ const Register = () => {
     const inputStyle = 'bg-white border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none'
     const labelStyle = 'block mb-2 text-sm font-medium text-gray-100'
 
-    // const [backDropStatus, setBackDropStatus] = useState(false)
+    const router = useRouter()
+
+    const [emailVerif, showEmailVerif] = useState(false)
 
     const submitForm = (e:FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        postNewUserData(first, last, email, pw, pwConf)
+        postNewUserData(first, last, email, pw, pwConf, router, showEmailVerif)
     }
 
     const [first, setFirst] = useState('')
@@ -30,8 +35,6 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
     const [pwConf, setPwConf] = useState('')
-
-    // const [userName, setUserName] = useState('')
 
     const [pwSimilar, setPwSimilar] = useState(false)
 
@@ -41,6 +44,7 @@ const Register = () => {
 
   return (
     <>
+    { !emailVerif ?
     <motion.form onSubmit={submitForm} initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
         <div className="grid gap-6 mb-3 md:grid-cols-2">
             <div>
@@ -73,10 +77,10 @@ const Register = () => {
         </div>
         <button disabled={pwSimilar ? false : true} type="submit" className="text-white flex items-center justify-center gap-2 bg-slate-600 rounded-2xl py-2 px-4 w-full hover:bg-slate-400 transition-all">Submit</button>
         
-    </motion.form>
-    {/* <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
-        {backDropStatus ? <RegConf userName={userName} setUserName={setUserName} confirm={confirmForm} hide={() => setBackDropStatus(false)} /> : '' }
-    </AnimatePresence> */}
+    </motion.form> :
+
+    <EmailVerif />
+    }
     </>
   )
 }

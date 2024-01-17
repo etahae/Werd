@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { userDataContext } from '../../../contexts/userData'
+import { userDataContext } from '../../contexts/userData'
 import Avatar from 'react-avatar'
 import { BsThreeDots } from "react-icons/bs";
 import { IoPencil } from "react-icons/io5";

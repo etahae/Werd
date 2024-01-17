@@ -1,11 +1,26 @@
+import axios from 'axios'
 import { motion } from 'framer-motion'
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime'
+import { useRouter } from 'next/navigation'
 import React, { FormEvent, useEffect, useRef, useState } from 'react'
 
 const inputStyle = "w-7 h-6 border-0 outline-none bg-transparent text-white text-3xl font-extrabold border-b-2 border-white text-center"
 
 let verifCode: string[] = ['', '', '', '', '', '']
 
+const postToken = async (router: AppRouterInstance) => {
+    await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/confirm`, {
+        token: verifCode.join(""),
+    }).then(res => {res.status == 200 || res.status == 201 ?  router.push('/login') : ''})
+}
+
 const EmailVerif = () => {
+
+/* <AnimatePresence initial={false} mode='wait' onExitComplete={() => null}>
+        {backDropStatus ? <RegConf userName={userName} setUserName={setUserName} confirm={confirmForm} hide={() => setBackDropStatus(false)} /> : '' }
+    </AnimatePresence> */
+
+    const router = useRouter()
 
     const handleInputKeyUp = (e:React.KeyboardEvent<HTMLInputElement>, index: number) => {
         var prevElement = (e.currentTarget)?.previousElementSibling as HTMLInputElement
@@ -33,7 +48,7 @@ const EmailVerif = () => {
 
     const submitCode = (e:FormEvent | null) => {
         e?.preventDefault()
-        console.log(verifCode.join(""))
+        postToken(router)
     }
 
   return (

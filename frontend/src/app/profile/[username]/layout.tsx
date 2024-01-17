@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext } from 'react'
-import { userDataContext, userDataType } from '../contexts/userData'
+import { userDataContext, userDataType } from './contexts/userData'
 
 export default function ProfilePageLayout({
     children, params

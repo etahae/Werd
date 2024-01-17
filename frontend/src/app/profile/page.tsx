@@ -1,7 +1,7 @@
 'use client'
 import React, { useContext, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { userDataContext } from './contexts/userData'
+import { userDataContext } from './[username]/contexts/userData'
 
 const Profile = () => {
 

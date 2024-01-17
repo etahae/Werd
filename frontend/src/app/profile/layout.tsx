@@ -1,6 +1,6 @@
 'use client'
 
-import { userDataContext } from './contexts/userData'
+import { userDataContext } from './[username]/contexts/userData'
 
 export default function ProfilePageLayout({
     children
