@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'OurSpotify',
-  description: 'OurSpotify',
+  title: 'Musicat',
+  description: 'Musicat',
 }
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='h-full bg-gradient-to-b from-slate-700 to-black'>
+    <html lang="en" className='bg-fixed bg-gradient-to-b from-slate-700 to-black w-full h-full'>
       <body className={inter.className}>{children}</body>
     </html>
   )

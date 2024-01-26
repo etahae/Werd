@@ -1,22 +1,36 @@
 import React, { FormEvent, useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { motion } from 'framer-motion'
+import axios from 'axios'
+// import { useRouter } from 'next/router'
+
+const postLoginData = async (username: string, password: string) => {
+  try {
+    await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/login`, {
+        username: username,
+        password: password
+    }, {withCredentials: true})
+  } catch {}
+}
 
 const Login = () => {
 
   const [user_email, setUserEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // const router = useRouter()
+
   const LoginSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(user_email + ' + ' + password)
+    // postLoginData()
+    
   }
 
   return (
     <>
       <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='flex flex-col justify-center items-start w-full'>
         <span className='text-white'>Welcome to</span>
-        <span className='text-white font-bold text-4xl'>OurSpotify</span>
+        <span className='text-white font-bold text-4xl'>Musicat</span>
       </motion.div>
 
       <motion.form initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} onSubmit={LoginSubmit} id='loginForm' className='flex flex-col gap-3 w-full'>

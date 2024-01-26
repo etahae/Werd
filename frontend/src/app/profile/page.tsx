@@ -1,9 +1,19 @@
-import React from 'react'
+'use client'
+import React, { useContext, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { userDataContext } from './[username]/contexts/userData'
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
+
+  const router = useRouter()
+
+  const userData = useContext(userDataContext)
+
+  //redirect to current user profile
+
+  useEffect(() => {
+    router.push(`/profile/${userData.username}`)
+  }, [])
 }
 
 export default Profile
