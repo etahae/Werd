@@ -16,7 +16,7 @@ export default function ProfilePageLayout({
 
 
 
-    const userToDisplayData = {id: -1, username: params.username, firstname: 'xd', lastname: 'lmfao', photo: '/images/loginBG.jpg'};
+    const userToDisplayData = {id: -1, username: params.username, firstname: 'xd', lastname: 'lmfao', photo: '/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg'};
     // userData = userToDisplayData
     // const data = {id: 2, username : params.username, firstname: 'lmfao', lastname: 'xd', photo: 'images/loginBG.jpg'}
 
@@ -26,9 +26,9 @@ export default function ProfilePageLayout({
         params.username != userData.username ?
 
           <userDataContext.Provider value={userToDisplayData}>
-            <div className='fixed bg-transparent w-full h-full' >{children}</div>
+            <div className='bg-fixed bg-transparent w-full h-full' >{children}</div>
           </userDataContext.Provider> :
         
-        <div className='fixed bg-transparent w-full h-full' >{children}</div>
+        <div className='bg-fixed bg-transparent w-full h-full' >{children}</div>
     )
   }

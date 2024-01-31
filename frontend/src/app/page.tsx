@@ -11,8 +11,7 @@ export default function Home() {
     router.push('./login/')
   }, [])
 
-  // return (
-  //   <></>
-  //   // <Login />
-  // )
+  return (
+    <></>
+  )
 }

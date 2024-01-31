@@ -13,7 +13,7 @@ export default function ProfilePageLayout({
 
     return (
         <userDataContext.Provider value={userData}>
-            <div className='fixed bg-transparent w-full h-full' >{children}</div>
+            <div className='bg-fixed bg-transparent w-full h-full' >{children}</div>
         </userDataContext.Provider>
     )
   }

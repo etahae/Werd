@@ -2,24 +2,24 @@
 
 import React, { FC, useContext } from 'react'
 import { userDataContext } from './contexts/userData'
-import Avatar from 'react-avatar'
-import UserProfile from './components/UserProfile/UserProfile'
+import UserProfile from './components/UserProfile'
 import MusicList from './components/MusicList'
 import Chat from './components/Chat'
+import MediaPlayer from './components/MediaPlayer'
 
 const ProfPage = () => {
 
   return (
-    <div className='w-full bg-black min-h-full flex justify-evenly items-start py-10 overflow-scroll'>
+    <div className='w-full bg-black h-[100vh] flex justify-evenly items-start md:pt-10 md:pb-10 overflow-scroll'>
 
-      <div className='bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-[600px] overflow-scroll'>
+      <div className='lg:inline hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-scroll'>
         <MusicList />
       </div>
       <UserProfile />
-      <div className='bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-[600px] overflow-scroll'>
+      <div className='lg:inline hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-scroll'>
         <Chat />
       </div>
-
+      <MediaPlayer />
     </div>
 
   )
