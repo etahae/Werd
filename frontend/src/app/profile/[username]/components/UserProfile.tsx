@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { userDataContext } from '../contexts/userData'
 import Avatar from 'react-avatar'
-import { BsColumnsGap, BsThreeDots } from "react-icons/bs";
+import { BsThreeDots } from "react-icons/bs";
 import { IoPencil } from "react-icons/io5";
+import { BsPlusCircleFill } from "react-icons/bs";
 
 interface playlist {
     name:string,
@@ -19,11 +20,11 @@ const UserProfile = () => {
 
     useEffect(() => {
         //fetch playlists
-        setPlaylists([{name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg"}, {name:"playlist2", image:"/images/loginBG.jpg"}, {name:"playlist2", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg"}])
+        setPlaylists([{name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg"}, {name:"playlist2", image:"/images/loginBG.jpg"}, {name:"playlist2", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg"}, {name:"playlist2", image:"/images/loginBG.jpg"}])
     }, [])
 
   return (
-    <div className='bg-gradient-to-b from-slate-700 to-black rounded-lg w-[100%] lg:w-[40%] h-full overflow-scroll relative'>
+    <div className='bg-gradient-to-b from-slate-700 to-black rounded-lg w-[100%] lg:w-[40%] h-full relative'>
         <div className='w-full rounded-2xl bg-transparent p-5 flex justify-between gap-5 items-center select-none'>
             <span className='font-bold text-4xl text-gray-100 flex items-center justify-between gap-5'>
                 <div className='text-white bg-transparent w-[140px] h-[140px] rounded-full overflow-hidden relative' onMouseEnter={() => setNewPfp(true)} onMouseLeave={() => setNewPfp(false)}>
@@ -41,18 +42,23 @@ const UserProfile = () => {
                 <BsThreeDots />
             </span>
         </div>
-        <div className="bg-transparent grid grid-cols-2 gap-2 px-6">
-            {playlists.map((pl) =>
-                <span className='bg-transparent flex justify-center items-center w-full h-full rounded-2xl overflow-hidden'>
-                    <div className='flex flex-col justify-center items-center w-52 h-52 rounded-2xl'>
-                        {/* <span className='rounded-2xl w-52 h-52 flex items-center justify-center bg-black relative'> */}
-                            <img className='object-cover w-52 h-52 rounded-2xl' src={pl.image}></img>
-                        {/* </span> */}
-                        <span className='bg-gray-400 text-gray-900 px-5 w-full flex justify-center rounded-lg font-bold'>{pl.name}</span>
-                    </div>
-                </span>
-            )}
+        <div className='flex py-2 overflow-x-scroll'>
+            <div className="bg-transparent inline-flex gap-2 px-6">
+                {playlists.map((pl) =>
+                    <span className='hover:scale-105 transition-transform bg-black p-2 flex justify-center items-center w-full h-full rounded-2xl overflow-hidden'>
+                        <div className='flex flex-col justify-center items-center w-40 h-40 rounded-2xl'>
+                            {/* <span className='rounded-2xl w-40 h-40 flex items-center justify-center bg-black relative'> */}
+                                <img className='object-cover w-40 h-40 rounded-2xl' src={pl.image}></img>
+                            {/* </span> */}
+                            <span className='bg-transparent text-gray-300 px-5 w-full flex justify-center rounded-lg font-bold'>{pl.name}</span>
+                        </div>
+                    </span>
+                )}
+            </div>
+            <span className='flex justify-center items-center min-w-40 h-40 bg-transparent font-bold text-4xl text-gray-400 hover:text-white transition-colors cursor-pointer'><BsPlusCircleFill /></span>
+
         </div>
+            <div className='h-20 bg-transparent'></div>
     </div>
   )
 }

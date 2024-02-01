@@ -12,9 +12,9 @@ const ProfPage = () => {
   return (
     <div className='w-full bg-black h-[100vh] flex justify-evenly items-start md:pt-10 md:pb-10 overflow-scroll'>
 
-      <div className='lg:inline hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-scroll'>
+      
         <MusicList />
-      </div>
+      
       <UserProfile />
       <div className='lg:inline hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-scroll'>
         <Chat />
