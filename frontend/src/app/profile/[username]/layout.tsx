@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext, useContext } from 'react'
-import { userDataContext, userDataType } from './contexts/userData'
+import { useContext } from 'react'
+import { userDataContext } from './contexts/userData'
 
 export default function ProfilePageLayout({
     children, params
@@ -26,7 +26,7 @@ export default function ProfilePageLayout({
         params.username != userData.username ?
 
           <userDataContext.Provider value={userToDisplayData}>
-            <div className='bg-fixed bg-transparent w-full h-full' >{children}</div>
+              <div className='bg-fixed bg-transparent w-full h-full' >{children}</div>
           </userDataContext.Provider> :
         
         <div className='bg-fixed bg-transparent w-full h-full' >{children}</div>
