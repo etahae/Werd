@@ -4,6 +4,7 @@ import { IoPlayBack } from "react-icons/io5";
 import { IoPlayForward } from "react-icons/io5";
 import { IoPause } from "react-icons/io5";
 import { playlist, track } from '../page';
+import { motion } from 'framer-motion';
 
 interface mediaPlayerProps {
   currentPlaylist: playlist | undefined,
@@ -33,7 +34,7 @@ const MediaPlayer:React.FC<mediaPlayerProps> = ( { currentPlaylist, currentTrack
 
   return (
     <div className='select-none absolute w-full top-[80%] text-black left-0 flex justify-center items-center'>
-      {currentTrack ? <div className='sticky bg-gray-400 w-[200px] md:w-[300px] transition-all flex px-3 py-1 rounded-xl flex-col items-center gap-3 justify-center'>
+      {currentTrack ? <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='sticky bg-gray-400 w-[200px] md:w-[300px] transition-transform flex px-3 py-1 rounded-xl flex-col items-center gap-3 justify-center'>
           <span className=' font-bold'>{currentTrack?.name}</span>
 
           <div className='relative w-full text-black font-semibold flex gap-1 justify-evenly items-center'>
@@ -51,7 +52,7 @@ const MediaPlayer:React.FC<mediaPlayerProps> = ( { currentPlaylist, currentTrack
               }
               <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={forwardMusic}><IoPlayForward /></span>
           </div>
-      </div>: ""}
+      </motion.div>: ""}
     </div>
   )
 }

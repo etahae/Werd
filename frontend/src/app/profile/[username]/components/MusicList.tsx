@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import { playlist, track } from '../page'
+import { motion } from 'framer-motion'
 
 interface musicListProps {
   currentPlaylist: playlist | undefined,
@@ -9,7 +10,7 @@ interface musicListProps {
 
 const MusicList:React.FC<musicListProps> = ({currentPlaylist, setCurrentPlaylist, setCurrentTrack}) => {
   return (
-    <div className='lg:flex flex-col items-center justify-start hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-y-scroll relative'>
+    <motion.div key={currentPlaylist?.name} initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='lg:flex flex-col items-center justify-start hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-y-scroll relative'>
       <div className="overflow-hidden absolute w-full h-full opacity-40 flex items-center justify-center">
         <img className='object-cover absolute left-0 top-[25%] scale-[500%]' src={currentPlaylist?.image}></img>
       </div>
@@ -29,7 +30,7 @@ const MusicList:React.FC<musicListProps> = ({currentPlaylist, setCurrentPlaylist
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

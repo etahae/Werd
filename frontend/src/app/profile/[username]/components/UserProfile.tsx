@@ -5,6 +5,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { IoPencil } from "react-icons/io5";
 import { BsPlusCircleFill } from "react-icons/bs";
 import { playlist } from '../page';
+import { motion } from 'framer-motion';
 
 interface userProfileProps {
     currentPlaylist: playlist | undefined,
@@ -21,11 +22,11 @@ const UserProfile:React.FC<userProfileProps> = ({currentPlaylist, setCurrentPlay
 
     useEffect(() => {
         //fetch playlists
-        setPlaylists([{name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, ]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {name:"playlist2", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}])
+        setPlaylists([{name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.2", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, ]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {name:"playlist3", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {name:"playlist4", image:"/images/loginBG.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}])
     }, [])
 
   return (
-    <div className='bg-gradient-to-b from-slate-700 to-black rounded-lg w-[100%] lg:w-[40%] h-full relative'>
+    <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='bg-gradient-to-b from-slate-700 to-black rounded-lg w-[100%] lg:w-[40%] h-full relative'>
         <div className='w-full rounded-2xl bg-transparent p-5 flex justify-between gap-5 items-center select-none'>
             <span className='font-bold text-4xl text-gray-100 flex items-center justify-between gap-5'>
                 <div className='text-white bg-transparent w-[140px] h-[140px] rounded-full overflow-hidden relative' onMouseEnter={() => setNewPfp(true)} onMouseLeave={() => setNewPfp(false)}>
@@ -60,7 +61,7 @@ const UserProfile:React.FC<userProfileProps> = ({currentPlaylist, setCurrentPlay
 
         </div>
             <div className='h-20 bg-transparent'></div>
-    </div>
+    </motion.div>
   )
 }
 

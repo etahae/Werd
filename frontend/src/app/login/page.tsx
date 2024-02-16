@@ -1,10 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Login from './components/Login'
 import Register from './components/Register'
-// import EmailVerif from './components/EmailVerif'
 
 const LogReg = () => {
 
