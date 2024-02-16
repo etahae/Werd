@@ -7,28 +7,36 @@ import Chat from './components/Chat'
 import MediaPlayer from './components/MediaPlayer'
 import { useState } from 'react'
 
+export interface track {
+  name: string,
+  image: string,
+  author: string,
+  duration: string,
+}
+
 export interface playlist {
   name:string,
   image:string,
-  musicList: string[],
+  musicList: track[],
 }
 
 const ProfPage = () => {
 
-  const [currentPLaylist, setCurrentPLaylist] = useState<playlist>()
+  const [currentPlaylist, setCurrentPlaylist] = useState<playlist>()
+  const [currentTrack, setCurrentTrack] = useState<track>()
 
   return (
     <div className='w-full bg-black h-[100vh] flex justify-evenly items-start md:pt-10 md:pb-10 overflow-scroll'>
       
-      <MusicList currentPLaylist={currentPLaylist} setCurrentPLaylist={setCurrentPLaylist} />
+      <MusicList currentPlaylist={currentPlaylist} setCurrentPlaylist={setCurrentPlaylist} setCurrentTrack={setCurrentTrack} />
   
-      <UserProfile currentPLaylist={currentPLaylist} setCurrentPLaylist={setCurrentPLaylist} />
+      <UserProfile currentPlaylist={currentPlaylist} setCurrentPlaylist={setCurrentPlaylist} />
 
       <div className='lg:inline hidden bg-gradient-to-b from-slate-700 to-black rounded-lg w-[25%] h-full overflow-scroll'>
         <Chat />
       </div>
 
-      <MediaPlayer />
+      <MediaPlayer currentPlaylist={currentPlaylist} currentTrack={currentTrack} setCurrentTrack={setCurrentTrack}/>
     </div>
 
   )

@@ -7,11 +7,11 @@ import { BsPlusCircleFill } from "react-icons/bs";
 import { playlist } from '../page';
 
 interface userProfileProps {
-    currentPLaylist: playlist | undefined,
-    setCurrentPLaylist : Dispatch<SetStateAction<playlist | undefined>>, 
+    currentPlaylist: playlist | undefined,
+    setCurrentPlaylist : Dispatch<SetStateAction<playlist | undefined>>, 
 }
 
-const UserProfile:React.FC<userProfileProps> = ({currentPLaylist, setCurrentPLaylist}) => {
+const UserProfile:React.FC<userProfileProps> = ({currentPlaylist, setCurrentPlaylist}) => {
 
     const userData = useContext(userDataContext)
 
@@ -21,7 +21,7 @@ const UserProfile:React.FC<userProfileProps> = ({currentPLaylist, setCurrentPLay
 
     useEffect(() => {
         //fetch playlists
-        setPlaylists([{name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:["music1", "music2"]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:["music1", "music2"]}, {name:"playlist2", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:["music1", "music2"]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:["music1", "music2"]}])
+        setPlaylists([{name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, ]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {name:"playlist2", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {name:"playlist2", image:"/images/loginBG.jpg", musicList:[{name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}])
     }, [])
 
   return (
@@ -46,7 +46,7 @@ const UserProfile:React.FC<userProfileProps> = ({currentPLaylist, setCurrentPLay
         <div className='flex py-2 overflow-x-scroll'>
             <div className="bg-transparent inline-flex gap-2 px-6">
                 {playlists.map((pl) =>
-                    <span onClick={() => {setCurrentPLaylist(pl)}} className='hover:scale-105 transition-transform bg-black p-2 flex justify-center items-center w-full h-full rounded-2xl overflow-hidden'>
+                    <span onClick={() => {setCurrentPlaylist(pl)}} className='hover:scale-105 transition-transform bg-black p-2 flex justify-center items-center w-full h-full rounded-2xl overflow-hidden'>
                         <div className='flex flex-col justify-center items-center w-40 h-40 rounded-2xl'>
                             {/* <span className='rounded-2xl w-40 h-40 flex items-center justify-center bg-black relative'> */}
                                 <img className='object-cover w-40 h-40 rounded-2xl' src={pl.image}></img>
