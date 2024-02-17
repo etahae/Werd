@@ -12,13 +12,14 @@ interface mediaPlayerProps {
   setCurrentTrack: Dispatch<SetStateAction<track | undefined>>,
 }
 
-const getNextTrack = ( currentTrack: track | undefined , currentPlaylist: playlist | undefined ) => {
+const getTrack = ( which: "prev" | "next", currentTrack: track | undefined , currentPlaylist: playlist | undefined ) => {
+  const one = (which == "prev" ? -1 : 1)
   const _curr = currentPlaylist?.musicList?.find(o => o.id == currentTrack?.id)
   console.log(_curr)
   var _index
   if (_curr)
     _index = currentPlaylist?.musicList?.indexOf(_curr)
-  return (_index ? currentPlaylist?.musicList[_index + 1] : undefined)
+  return (_index ? currentPlaylist?.musicList[_index + one] : undefined)
 }
 
 const MediaPlayer:React.FC<mediaPlayerProps> = ( { currentPlaylist, currentTrack, setCurrentTrack } ) => {
@@ -31,14 +32,10 @@ const MediaPlayer:React.FC<mediaPlayerProps> = ( { currentPlaylist, currentTrack
     setIsPaused(true)
   }
 
-  const forwardMusic = () => {
-    const nextTrack = getNextTrack(currentTrack, currentPlaylist)
-    if (nextTrack)
-      setCurrentTrack(nextTrack)
-  }
-
-  const backwardMusic = () => {
-
+  const changeTrack = ( which: "prev" | "next" ) => {
+    const changedTrack = getTrack(which, currentTrack, currentPlaylist)
+    if (changedTrack)
+      setCurrentTrack(changedTrack)
   }
 
   const [isPaused, setIsPaused] = useState(true)
@@ -56,13 +53,13 @@ const MediaPlayer:React.FC<mediaPlayerProps> = ( { currentPlaylist, currentTrack
           </div>
     
           <div className='text-black flex items-center bg-transparent gap-5 text-xl justify-center'>
-              <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={backwardMusic}><IoPlayBack /></span>
+              <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={() => {changeTrack("prev")}}><IoPlayBack /></span>
               { isPaused ?
               <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={playMusic}><IoPlay /></span>
               :
               <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={pauseMusic}><IoPause/></span>
               }
-              <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={forwardMusic}><IoPlayForward /></span>
+              <span className='hover:text-gray-300 cursor-pointer transition-all' onClick={() => {changeTrack("next")}}><IoPlayForward /></span>
           </div>
       </motion.div>
       : ""}
