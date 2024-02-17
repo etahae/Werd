@@ -8,6 +8,7 @@ import MediaPlayer from './components/MediaPlayer'
 import { useState } from 'react'
 
 export interface track {
+  id: number,
   name: string,
   image: string,
   author: string,
@@ -15,8 +16,9 @@ export interface track {
 }
 
 export interface playlist {
-  name:string,
-  image:string,
+  id: number,
+  name: string,
+  image: string,
   musicList: track[],
 }
 
