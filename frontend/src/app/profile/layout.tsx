@@ -9,6 +9,7 @@ export default function ProfilePageLayout({
   }) {
 
     //get user data
+    // username = firstname[0] + lastname
     const userData = {id: 0, username : "tahan", firstname: 'taha', lastname: 'namir', photo: ''}
 
     return (

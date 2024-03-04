@@ -20,6 +20,11 @@ const UserProfile:React.FC<userProfileProps> = ({currentPlaylist, setCurrentPlay
 
     const [playlists, setPlaylists] = useState<playlist[]>([])
 
+
+    const addPLaylist = () => {
+        
+    }
+
     useEffect(() => {
         //fetch playlists
         setPlaylists([{id: 0, name:"playlist1", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{id: 0, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 1, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 2, name: "trackN.2", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 3, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 4, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 5, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 6, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 7, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 8, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, {id: 9, name: "trackN.3", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}, ]}, {id: 1, name:"playlist2", image:"/images/loginBG.jpg", musicList:[{id: 0, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {id: 2, name:"playlist3", image:"/images/astronomie-du-ciel-nocturne-galactique-science-ont-combine-ia-generative.jpg", musicList:[{id: 0, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}, {id: 3, name:"playlist4", image:"/images/loginBG.jpg", musicList:[{id: 0, name: "trackN.1", author: "tahes", image: "/images/loginBG.jpg", duration: "5:23"}]}])
@@ -57,7 +62,7 @@ const UserProfile:React.FC<userProfileProps> = ({currentPlaylist, setCurrentPlay
                     </span>
                 )}
             </div>
-            <span className='flex justify-center items-center min-w-40 h-40 bg-transparent font-bold text-4xl text-gray-400 hover:text-white transition-colors cursor-pointer'><BsPlusCircleFill /></span>
+            <span onClick={addPLaylist} className='flex justify-center items-center min-w-40 h-40 bg-transparent font-bold text-4xl text-gray-400 hover:text-white transition-colors cursor-pointer'><BsPlusCircleFill /></span>
 
         </div>
             <div className='h-20 bg-transparent'></div>

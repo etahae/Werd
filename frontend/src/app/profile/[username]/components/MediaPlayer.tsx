@@ -19,7 +19,8 @@ const getTrack = ( which: "prev" | "next", currentTrack: track | undefined , cur
   var _index
   if (_curr)
     _index = currentPlaylist?.musicList?.indexOf(_curr)
-  return (_index ? currentPlaylist?.musicList[_index + one] : undefined)
+  console.log(_index)
+  return (_index != undefined ? currentPlaylist?.musicList[_index + one] : undefined)
 }
 
 const MediaPlayer:React.FC<mediaPlayerProps> = ( { currentPlaylist, currentTrack, setCurrentTrack } ) => {

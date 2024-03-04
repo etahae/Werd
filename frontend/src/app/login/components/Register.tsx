@@ -6,14 +6,15 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 import EmailVerif from './EmailVerif'
 
 const postNewUserData = async (firstname: string, lastname: string, email: string, password: string, confirmPassword: string, router: AppRouterInstance, showEmailVerif: React.Dispatch<React.SetStateAction<boolean>>) => {
-    await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/api/auth/registerNewListener`, {
-        username: "xd",
-        firstname,
-        lastname,
-        email,
-        password,
-        confirmPassword,
-    }).then(res => {res.status == 200 || res.status == 201 ? showEmailVerif(true) : ''})
+    // await axios.post(`http://${process.env.NEXT_PUBLIC_HOST_IP}:${process.env.NEXT_PUBLIC_HOST_BACK_PORT}/users/hello`, {
+    //     username: "xd",
+    //     firstname,
+    //     lastname,
+    //     email,
+    //     password,
+    //     confirmPassword,
+    // }).then(res => {res.status == 200 || res.status == 201 ? showEmailVerif(true) : ''})
+    showEmailVerif(true)
 }
 
 const Register = () => {
@@ -30,6 +31,7 @@ const Register = () => {
         postNewUserData(first, last, email, pw, pwConf, router, showEmailVerif)
     }
 
+    const [username, setUserName] = useState('')
     const [first, setFirst] = useState('')
     const [last, setLast] = useState('')
     const [email, setEmail] = useState('')
