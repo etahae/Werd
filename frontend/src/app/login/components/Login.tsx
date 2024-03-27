@@ -30,7 +30,7 @@ const Login = () => {
     <>
       <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} className='flex flex-col justify-center items-start w-full'>
         <span className='text-white'>Welcome to</span>
-        <span className='text-white font-bold text-4xl'>Musicat</span>
+        <span className='text-white font-bold text-4xl'>Werd</span>
       </motion.div>
 
       <motion.form initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}} onSubmit={LoginSubmit} id='loginForm' className='flex flex-col gap-3 w-full'>
